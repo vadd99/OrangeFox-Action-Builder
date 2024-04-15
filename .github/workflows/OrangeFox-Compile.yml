@@ -20,12 +20,11 @@ on:
       DEVICE_TREE:
         description: 'Custom Recovery Tree'
         required: true
-        default: 'https://github.com/vadd99/android_device_xiaomi_plato_TWRP'
+        default: 'https://github.com/vadd99/ofox_device_xiaomi_plato'
       DEVICE_TREE_BRANCH:
         description: 'Custom Recovery Tree Branch'
         required: true
-        default: 'TWRP-12.1_A14-HyperOS
-default'
+        default: 'los'
       DEVICE_PATH:
         description: 'Specify your device path.'
         required: true
@@ -88,10 +87,6 @@ jobs:
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         git clone ${{ github.event.inputs.DEVICE_TREE }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
         git clone https://github.com/vadd99/gflags ./external/gflags
-        rm -rf ./bootable/recovery
-        rm -rf ./system/vold
-        git clone https://github.com/ChrisCatto/bootable_recovery ./bootable/recovery
-        git clone https://github.com/ChrisCatto/android_system_vold ./system/vold
 
     - name: Check Manifest Branch
       uses: haya14busa/action-cond@v1
